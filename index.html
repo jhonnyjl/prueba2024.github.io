@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelos y Anfitrionas</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="Author" lang="en" content="Jhonny López">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .social-icons a {
+            margin: 0 10px;
+            color: #333;
+            text-decoration: none;
+        }
+        .social-icons a:hover {
+            color: #007bff;
+        }
+        .video-section {
+            margin: 20px 0;
+        }
+        video {
+            width: 100%;
+            max-width: 720px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-dark text-white text-center py-3">
+        <h1>Bienvenidas a Nuestra Comunidad para Modelos y Anfitrionas</h1>
+        <p>Conéctate y expande tu red de contactos</p>
+    </header>
+
+    <div class="container">
+        <div class="jumbotron text-center">
+            <div class="col-md-8 offset-md-2">
+            	<h1 class="display-4">Únete a Nuestro Sitio</h1>
+        		<p class="lead">Si eres modelo o anfitriona, ¡únete a nuestra comunidad!</p>
+                
+                <!-- Video Section -->
+                <div class="video-section text-center">
+                    <h2>Próximamente</h2>
+                    <video controls>
+                        <source src="video1.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                </div>
+
+                <h2 class="text-center">Solicitud de código de invitación</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Ingresa tu correo" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="url" class="form-control" id="redsocial1" name="redsocial1" placeholder="Ingresa la URL de tu primera red social" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="url" class="form-control" id="redsocial2" name="redsocial2" placeholder="Ingresa la URL de tu segunda red social" required>
+                    </div>
+                    <div class="form-group">
+                        <label>¿Tienes por lo menos 18 años?</label><br>
+                        <input type="radio" name="mayorEdad" value="si" required> Sí<br>
+                        <input type="radio" name="mayorEdad" value="no" required> No
+                    </div>
+                    <div class="form-group">
+                        <label>¿Mis cromosomas son?</label><br>
+                        <input type="radio" name="sexoFemenino" value="si" required> XX<br>
+                        <input type="radio" name="sexoFemenino" value="no" required> XY
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+
+                <div id="message" class="alert alert-info mt-3" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Comunidad para modelos y anfitrionas. Todos los derechos reservados.</p>
+        <div">
+            <a href="https://www.facebook.com/profile.php?id=61557863933102" target="_blank"><i class="fab fa-facebook fa-lg"></i></a>
+            <a href="https://github.com/jhonnyjl" target="_blank"><i class="fab fa-github fa-lg"></i></a>
+        </div>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="javascript.js"></script>
+
+</body>
+</html>
