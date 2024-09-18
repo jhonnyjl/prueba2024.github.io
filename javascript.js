@@ -69,8 +69,8 @@ function isValidEmail(email) {
             localStorage.setItem('email', email);
 
             // Mostrar mensaje de éxito
-            showMessage('success', '¡Gracias por registrarte! Nos pondremos en contacto contigo pronto. Se hará la verificación de sus redes sociales, una vez verificadas, se le enviará un código de invitación a su correo. Nos reservamos el derecho de admisión.');
-
-            // Limpiar el formulario
-            document.getElementById('registerForm').reset();
+            showMessage('success', '¡Gracias por registrarte! Nos pondremos en contacto contigo pronto. Debido a que pueden presentarse perfiles falsos, se hace la solicitud de las 2 redes sociales, se verificará si cumplen con el objetivo.');
+            
+            // Enviar datos al servidor
+            this.submit();
         });
