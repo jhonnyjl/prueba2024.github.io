@@ -1,4 +1,29 @@
-document.getElementById('registerForm').addEventListener('submit', function(event) {
+function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function isValidURL(url) {
+            const re = /^(ftp|http|https):\/\/[^ "]+$/;
+            return re.test(url);
+        }
+
+        function showMessage(type, text) {
+            const successAlert = document.getElementById('successAlert');
+            const errorAlert = document.getElementById('errorAlert');
+            
+            if (type === 'success') {
+                successAlert.textContent = text;
+                successAlert.style.display = 'block';
+                errorAlert.style.display = 'none';
+            } else {
+                errorAlert.textContent = text;
+                errorAlert.style.display = 'block';
+                successAlert.style.display = 'none';
+            }
+        }
+
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
             var email = document.getElementById('email').value;
@@ -7,24 +32,36 @@ document.getElementById('registerForm').addEventListener('submit', function(even
             var mayorEdad = document.querySelector('input[name="mayorEdad"]:checked').value;
             var sexoFemenino = document.querySelector('input[name="sexoFemenino"]:checked').value;
 
+            // Validar correo electrónico
+            if (!isValidEmail(email)) {
+                showMessage('error', 'Por favor ingresa un correo electrónico válido.');
+                return;
+            }
+
+            // Validar URLs
+            if (!isValidURL(redsocial1) || !isValidURL(redsocial2)) {
+                showMessage('error', 'Por favor ingresa URLs válidas para las redes sociales.');
+                return;
+            }
+
             // Validación de restricciones
             if (localStorage.getItem('email') === email) {
-                alert('Este correo ya ha sido registrado.');
+                showMessage('error', 'Este correo ya ha sido registrado.');
                 return;
             }
 
             if (redsocial1 === redsocial2) {
-                alert('Las dos URLs de redes sociales no pueden ser iguales.');
+                showMessage('error', 'Las dos URLs de redes sociales no pueden ser iguales.');
                 return;
             }
 
             if (mayorEdad !== 'si') {
-                alert('Debes tener al menos 18 años.');
+                showMessage('error', 'Debes tener al menos 18 años.');
                 return;
             }
 
             if (sexoFemenino !== 'si') {
-                alert('Lo sentimos, no puedes registrarte.');
+                showMessage('error', 'Lo sentimos, no puedes registrarte.');
                 return;
             }
 
@@ -32,6 +69,8 @@ document.getElementById('registerForm').addEventListener('submit', function(even
             localStorage.setItem('email', email);
 
             // Mostrar mensaje de éxito
-            document.getElementById('message').style.display = 'block';
-            document.getElementById('message').textContent = '¡Gracias por registrarte! Nos pondremos en contacto contigo pronto. Se hará la verificación de sus redes sociales, una vez verificadas, se le enviará un código de invitación a su correo. Nos reservamos el derecho de admisión.';
+            showMessage('success', '¡Gracias por registrarte! Nos pondremos en contacto contigo pronto. Se hará la verificación de sus redes sociales, una vez verificadas, se le enviará un código de invitación a su correo. Nos reservamos el derecho de admisión.');
+
+            // Limpiar el formulario
+            document.getElementById('registerForm').reset();
         });
