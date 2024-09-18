@@ -1,29 +1,29 @@
 function isValidEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
 
-        function isValidURL(url) {
-            const re = /^(ftp|http|https):\/\/[^ "]+$/;
-            return re.test(url);
-        }
+function isValidURL(url) {
+    const re = /^(ftp|http|https):\/\/[^ "]+$/;
+    return re.test(url);
+}
 
-        function showMessage(type, text) {
-            const successAlert = document.getElementById('successAlert');
-            const errorAlert = document.getElementById('errorAlert');
-            
-            if (type === 'success') {
-                successAlert.textContent = text;
-                successAlert.style.display = 'block';
-                errorAlert.style.display = 'none';
-            } else {
-                errorAlert.textContent = text;
-                errorAlert.style.display = 'block';
-                successAlert.style.display = 'none';
-            }
-        }
+function showMessage(type, text) {
+    const successAlert = document.getElementById('successAlert');
+    const errorAlert = document.getElementById('errorAlert');
+    
+    if (type === 'success') {
+        successAlert.textContent = text;
+        successAlert.style.display = 'block';
+        errorAlert.style.display = 'none';
+    } else {
+        errorAlert.textContent = text;
+        errorAlert.style.display = 'block';
+        successAlert.style.display = 'none';
+    }
+}
 
-        document.getElementById('registerForm').addEventListener('submit', function(event) {
+document.getElementById('registerForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
     var email = document.getElementById('email').value;
@@ -34,36 +34,40 @@ function isValidEmail(email) {
 
     // Validar correo electrónico
     if (!isValidEmail(email)) {
-        showMessage('error', 'El correo electrónico ingresado no es válido.');
+        showMessage('error', 'Por favor ingresa un correo electrónico válido.');
         return;
     }
 
     // Validar URLs
-    if (!isValidURL(redsocial1)) {
-        showMessage('error', 'La URL de la primera red social no es válida.');
+    if (!isValidURL(redsocial1) || !isValidURL(redsocial2)) {
+        showMessage('error', 'Por favor ingresa URLs válidas para las redes sociales.');
         return;
     }
 
-    if (!isValidURL(redsocial2)) {
-        showMessage('error', 'La URL de la segunda red social no es válida.');
+    // Validación de restricciones
+    if (localStorage.getItem('email') === email) {
+        showMessage('error', 'Este correo ya ha sido registrado.');
         return;
     }
 
-    // Validar mayor de edad
-    if (mayorEdad === 'no') {
-        showMessage('error', 'Debes tener al menos 18 años para registrarte.');
+    if (redsocial1 === redsocial2) {
+        showMessage('error', 'Las dos URLs de redes sociales no pueden ser iguales.');
         return;
     }
 
-    // Validar cromosomas
-    if (sexoFemenino === 'no') {
-        showMessage('error', 'Solo se aceptan personas con cromosomas XX.');
+    if (mayorEdad !== 'si') {
+        showMessage('error', 'Debes tener al menos 18 años.');
         return;
     }
 
-    // Si todas las validaciones pasan, redirigir a la página de agradecimiento
+    if (sexoFemenino !== 'si') {
+        showMessage('error', 'Lo sentimos, no puedes registrarte.');
+        return;
+    }
+
+    // Guardar correo en localStorage para prevenir el registro duplicado
+    localStorage.setItem('email', email);
+
+    // Redirigir a la página de agradecimiento
     window.location.href = 'gracias.html';
-
-    // Limpiar el formulario
-    this.reset();
 });
