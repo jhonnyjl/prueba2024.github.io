@@ -68,6 +68,5 @@ document.getElementById('registerForm').addEventListener('submit', function(even
     // Guardar correo en localStorage para prevenir el registro duplicado
     localStorage.setItem('email', email);
 
-    // Redirigir a la página de agradecimiento
-    window.location.href = 'gracias.html';
+    
 });
