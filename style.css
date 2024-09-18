@@ -41,5 +41,5 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Altura de la ventana */
+            height: 300px; /* Altura de la ventana */
         }
