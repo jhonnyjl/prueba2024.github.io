@@ -1,4 +1,29 @@
-document.getElementById('registerForm').addEventListener('submit', function(event) {
+function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function isValidURL(url) {
+            const re = /^(ftp|http|https):\/\/[^ "]+$/;
+            return re.test(url);
+        }
+
+        function showMessage(type, text) {
+            const successAlert = document.getElementById('successAlert');
+            const errorAlert = document.getElementById('errorAlert');
+            
+            if (type === 'success') {
+                successAlert.textContent = text;
+                successAlert.style.display = 'block';
+                errorAlert.style.display = 'none';
+            } else {
+                errorAlert.textContent = text;
+                errorAlert.style.display = 'block';
+                successAlert.style.display = 'none';
+            }
+        }
+
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
     var email = document.getElementById('email').value;
