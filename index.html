@@ -6,35 +6,20 @@
     <title>Modelos y Anfitrionas</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <meta name="Author" lang="en" content="Jhonny López">
+    <meta name="Descripcion" lang="en" content="creada para apoyo a modelos y anfitrionas mujeres">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        .social-icons a {
-            margin: 0 10px;
-            color: #333;
-            text-decoration: none;
-        }
-        .social-icons a:hover {
-            color: #007bff;
-        }
-        .video-section {
-            margin: 20px 0;
-        }
-        video {
-            width: 100%;
-            max-width: 720px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Header -->
     <header class="bg-dark text-white text-center py-3">
         <h1>Bienvenidas a Nuestra Comunidad para Modelos y Anfitrionas</h1>
         <p>Conéctate y expande tu red de contactos</p>
     </header>
 
+    <!-- Main Section -->
     <div class="container">
         <div class="jumbotron text-center">
             <div class="col-md-8 offset-md-2">
@@ -51,7 +36,12 @@
                 </div>
 
                 <h2 class="text-center">Solicitud de código de invitación</h2>
-                <form id="registerForm" name= "FormPrueba" netlify>
+                
+                <!-- Message Alerts -->
+                <div id="successAlert" class="alert alert-success message-box success" style="display: none;"></div>
+                <div id="errorAlert" class="alert alert-danger message-box error" style="display: none;"></div>
+
+                <form id="registerForm" name="FormModa" data-netlify="true">
                     <div class="form-group">
                         <input type="email" class="form-control" id="email" name="email" placeholder="Ingresa tu correo" required>
                     </div>
@@ -73,20 +63,20 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
-
-                <div id="message" class="alert alert-info mt-3" style="display: none;"></div>
             </div>
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="bg-dark text-white text-center py-3">
         <p>&copy; 2024 Comunidad para modelos y anfitrionas. Todos los derechos reservados.</p>
-        <div">
+        <div class="social-icons">
             <a href="https://www.facebook.com/profile.php?id=61557863933102" target="_blank"><i class="fab fa-facebook fa-lg"></i></a>
             <a href="https://github.com/jhonnyjl" target="_blank"><i class="fab fa-github fa-lg"></i></a>
         </div>
     </footer>
-    
+
+    <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
